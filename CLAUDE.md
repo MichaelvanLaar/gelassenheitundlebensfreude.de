@@ -6,11 +6,10 @@ German personal development blog covering mindfulness, productivity, and inner s
 
 | File | Purpose |
 |------|---------|
-| `.claude/settings.json` | Permissions, hooks, environment variables           |
-| `.claude/settings.local.json` | TODO: add description  |
-| `.claude/skills/cc-init/SKILL.md` | TODO: add description  |
-| `.claude/skills/cc-optimize/SKILL.md` | TODO: add description  |
-| `.gitignore` | Git ignore patterns                                 |
+| `.claude/settings.json` | Permissions, hooks, environment variables            |
+| `.claude/skills/cc-init/SKILL.md` | TODO: add description   |
+| `.claude/skills/cc-optimize/SKILL.md` | TODO: add description   |
+| `.gitignore` | Git ignore patterns                                  |
 
 ## Commands
 

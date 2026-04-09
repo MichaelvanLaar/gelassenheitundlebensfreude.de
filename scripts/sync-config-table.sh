@@ -2,6 +2,7 @@
 # Keeps the "Key Config Files" table in CLAUDE.md in sync with the filesystem.
 # - Removes rows for files that no longer exist
 # - Appends rows for new config files with a placeholder description
+# - Excludes gitignored files (they are per-machine, not part of the committed state)
 # Preserves all existing hand-written descriptions.
 # Invoked automatically by the pre-commit hook.
 
@@ -21,6 +22,7 @@ config_files=()
 # Root-level config files (by extension)
 while IFS= read -r -d '' f; do
   name="$(basename "$f")"
+  # Skip non-config files
   case "$name" in
     package-lock.json|README.md|CHANGELOG.md|AGENTS.md|CLAUDE.md|LICENSE) continue ;;
   esac
@@ -54,6 +56,18 @@ if [[ -d "$ROOT/.github/workflows" ]]; then
   done < <(find "$ROOT/.github/workflows" -maxdepth 1 -type f -print0 2>/dev/null | sort -z)
 fi
 
+# Filter out gitignored files (per-machine / personal files don't belong
+# in the committed config table — they may not exist on other clones).
+# git check-ignore exits 0 if the path is ignored, 1 if tracked/untracked-but-not-ignored.
+filtered_files=()
+cd "$ROOT"
+for file in "${config_files[@]}"; do
+  if ! git check-ignore -q "$file" 2>/dev/null; then
+    filtered_files+=("$file")
+  fi
+done
+config_files=("${filtered_files[@]}")
+
 # Sort config files
 IFS=$'\n' sorted_files=($(sort <<<"${config_files[*]}")); unset IFS
 
@@ -85,6 +99,7 @@ for file in "${sorted_files[@]}"; do
 done
 
 # Replace the table in CLAUDE.md
+# Find the section, skip old blank lines + table rows, emit new table
 tmpfile="$(mktemp)"
 in_section=false
 table_replaced=false
@@ -97,9 +112,11 @@ while IFS= read -r line; do
   fi
 
   if $in_section && ! $table_replaced; then
+    # Skip blank lines and old table rows between heading and next content
     if [[ "$line" == "" ]] || [[ "$line" == "|"* ]]; then
       continue
     fi
+    # First non-blank, non-table line: emit new table, then this line
     echo "" >> "$tmpfile"
     echo "$new_table" >> "$tmpfile"
     echo "" >> "$tmpfile"
@@ -112,7 +129,7 @@ while IFS= read -r line; do
   echo "$line" >> "$tmpfile"
 done < "$CLAUDE_MD"
 
-# If table is the last thing in the file
+# If we hit EOF while still in the section (table is the last thing)
 if $in_section && ! $table_replaced; then
   echo "" >> "$tmpfile"
   echo "$new_table" >> "$tmpfile"
