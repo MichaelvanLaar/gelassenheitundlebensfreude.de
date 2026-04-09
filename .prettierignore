@@ -1,0 +1,9 @@
+_site/
+node_modules/
+docs/requirements/content/
+src/assets/
+src/fonts/
+package-lock.json
+
+# Nunjucks templates — Prettier's HTML parser mangles {% ... %} tags inside attributes.
+*.njk

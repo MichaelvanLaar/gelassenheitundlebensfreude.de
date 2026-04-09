@@ -1,2 +1,17 @@
 .claude/settings.local.json
 .claude/local.md
+
+# Build output
+_site/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Eleventy cache
+.cache/
+.eleventy-cache/
+
+# OS
+.DS_Store
+Thumbs.db

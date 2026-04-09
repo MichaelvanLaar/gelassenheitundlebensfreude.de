@@ -1,0 +1,23 @@
+{# Reusable tile primitive — used by the Homepage for category tiles and by Category pages for
+article teasers. Expected locals: - tileHref (string): destination URL - tileTitle (string): heading
+text - tileImage (string): absolute path to teaser/category image - tileExcerpt (string, optional):
+short supporting copy #}
+<a class="tile" href="{{ tileHref }}">
+  <div class="tile__media">
+    <img
+      class="tile__image"
+      src="{{ tileImage }}"
+      alt=""
+      loading="lazy"
+      decoding="async"
+      width="640"
+      height="640"
+    />
+  </div>
+  <div class="tile__body">
+    <h2 class="tile__title">{{ tileTitle }}</h2>
+    {% if tileExcerpt %}
+    <p class="tile__excerpt">{{ tileExcerpt }}</p>
+    {% endif %}
+  </div>
+</a>

@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+---
+
+<section class="hero">
+  <div class="hero__inner">{{ content | safe }}</div>
+</section>
+
+<section class="category-grid" aria-label="Themenbereiche">
+  <ul class="category-grid__list">
+    {% for item in site.nav %} {% set catSlug = item.url | replace("/", "") %} {% set tileHref =
+    item.url %} {% set tileTitle = item.label %} {% set tileImage = "/assets/images/categories/" +
+    catSlug + ".avif" %} {% set tileExcerpt = null %}
+    <li class="category-grid__item">{% include "partials/tile.njk" %}</li>
+    {% endfor %}
+  </ul>
+</section>

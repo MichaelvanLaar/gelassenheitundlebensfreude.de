@@ -1,0 +1,25 @@
+{
+  "name": "gelassenheitundlebensfreude-de",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static site for gelassenheitundlebensfreude.de — a German personal-development blog.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve --quiet",
+    "clean": "rm -rf _site",
+    "format": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{md,njk,css,js,json}\" \".eleventy.js\"",
+    "lint": "prettier --check --no-error-on-unmatched-pattern \"src/**/*.{md,njk,css,js,json}\" \".eleventy.js\""
+  },
+  "dependencies": {
+    "@11ty/eleventy": "3.1.5",
+    "@11ty/eleventy-img": "6.0.4",
+    "markdown-it": "14.1.1"
+  },
+  "devDependencies": {
+    "prettier": "3.8.1"
+  }
+}

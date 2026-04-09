@@ -1,0 +1,11 @@
+{% set ogImage = headerImage if headerImage else site.logoPath %}
+<meta property="og:site_name" content="{{ site.name }}" />
+<meta property="og:locale" content="{{ site.locale }}" />
+<meta
+  property="og:type"
+  content="{{ 'article' if layout == 'layouts/article.njk' else 'website' }}"
+/>
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ metaDescription }}" />
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+<meta property="og:image" content="{{ site.url }}{{ ogImage }}" />

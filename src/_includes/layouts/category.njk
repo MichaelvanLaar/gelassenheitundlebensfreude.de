@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+---
+
+{% set categoryArticles = collections.articles | selectattr("data.category", "equalto",
+categorySlug) | list %}
+<section class="category-intro">
+  <div class="category-intro__inner">{{ content | safe }}</div>
+</section>
+
+<section class="teaser-grid" aria-label="Artikel in {{ title }}">
+  <ul class="teaser-grid__list">
+    {% for article in categoryArticles %} {% set tileHref = article.url %} {% set tileTitle =
+    article.data.title %} {% set tileImage = article.data.teaserImage %} {% set tileExcerpt =
+    article.data.excerpt %}
+    <li class="teaser-grid__item">{% include "partials/tile.njk" %}</li>
+    {% endfor %}
+  </ul>
+</section>

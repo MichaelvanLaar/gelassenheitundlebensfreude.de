@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="{{ site.language }}">
+  <head>
+    {% include "partials/head-meta.njk" %} {% include "partials/head-og.njk" %} {% if layout ==
+    "layouts/article.njk" %} {% include "partials/head-jsonld.njk" %} {% endif %}
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    {% include "partials/site-header.njk" %}
+    <main id="main">{{ content | safe }}</main>
+    {% include "partials/site-footer.njk" %}
+  </body>
+</html>

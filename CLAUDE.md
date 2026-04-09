@@ -6,10 +6,19 @@ German personal development blog covering mindfulness, productivity, and inner s
 
 | File | Purpose |
 |------|---------|
-| `.claude/settings.json` | Permissions, hooks, environment variables            |
-| `.claude/skills/cc-init/SKILL.md` | TODO: add description   |
-| `.claude/skills/cc-optimize/SKILL.md` | TODO: add description   |
-| `.gitignore` | Git ignore patterns                                  |
+| `.claude/settings.json` | Permissions, hooks, environment variables             |
+| `.claude/skills/cc-init/SKILL.md` | TODO: add description    |
+| `.claude/skills/cc-optimize/SKILL.md` | TODO: add description    |
+| `.claude/skills/openspec-apply-change/SKILL.md` | TODO: add description |
+| `.claude/skills/openspec-archive-change/SKILL.md` | TODO: add description |
+| `.claude/skills/openspec-explore/SKILL.md` | TODO: add description |
+| `.claude/skills/openspec-propose/SKILL.md` | TODO: add description |
+| `.editorconfig` | TODO: add description |
+| `.eleventy.js` | TODO: add description |
+| `.gitignore` | Git ignore patterns                                   |
+| `package.json` | TODO: add description |
+| `.prettierignore` | TODO: add description |
+| `.prettierrc.json` | TODO: add description |
 
 ## Commands
 

@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="article">
+  <header class="article__header" style="--header-image: url('{{ headerImage }}');">
+    <div class="article__header-inner">
+      <p class="article__category">
+        <a href="/{{ category }}/">{{ site.categories[category] }}</a>
+      </p>
+      <h1 class="article__title">{{ title }}</h1>
+      <p class="article__meta">
+        <span class="article__reading-time"> {{ content | readingTime }} Min. Lesezeit </span>
+      </p>
+    </div>
+  </header>
+  <div class="article__body">{{ content | safe }}</div>
+</article>
