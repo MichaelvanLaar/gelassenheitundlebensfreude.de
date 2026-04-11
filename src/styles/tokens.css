@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Design Tokens — gelassenheitundlebensfreude.de
+   Derived from logo SVG and screen designs.
+   All colour values used in rendered CSS MUST resolve to a token defined here.
+   ========================================================================== */
+
+:root {
+  /* --------------------------------------------------------------------
+     Brand colours — extracted from logo-gelassenheitundlebensfreude.svg
+     -------------------------------------------------------------------- */
+
+  /* --- Text / neutral --- */
+  --color-text: #393939;
+
+  /* --- Teal / blue palette (water / sky motif) --- */
+  --color-teal: #69a1a9;
+  --color-teal-blue: #76aabf;
+  --color-blue: #84b4d7;
+  --color-blue-light: #aad2eb;
+  --color-sage: #97c6c3;
+
+  /* --- Warm palette (sun / sand motif) --- */
+  --color-amber: #fab066;
+  --color-gold: #fac670;
+  --color-gold-soft: #faca79;
+  --color-peach: #fbd69e;
+  --color-cream: #fae7c4;
+
+  /* --------------------------------------------------------------------
+     Semantic tokens — mapped from brand colours
+     -------------------------------------------------------------------- */
+
+  /* Backgrounds */
+  --color-bg: #ffffff;
+  --color-bg-soft: var(--color-cream);
+  --color-bg-hero: var(--color-cream);
+
+  /* Text */
+  --color-text-primary: var(--color-text);
+  --color-text-heading: var(--color-text);
+  --color-text-muted: #6b6b6b;
+
+  /* Links and navigation (WCAG AA ≥ 4.5:1 on white) */
+  --color-link: #3d7a82; /* teal, darkened for 4.88:1 contrast */
+  --color-link-hover: #2e6a72; /* teal, darker for 6.14:1 contrast */
+  --color-nav-active: var(--color-text);
+
+  /* Accent / CTA */
+  --color-accent: var(--color-amber);
+  --color-accent-hover: var(--color-gold);
+
+  /* Borders and dividers */
+  --color-border: #e0e0e0;
+  --color-border-light: var(--color-cream);
+
+  /* Footer */
+  --color-footer-bg: var(--color-sage);
+  --color-footer-text: var(--color-text);
+}

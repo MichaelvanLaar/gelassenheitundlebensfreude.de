@@ -1,0 +1,128 @@
+/* ==========================================================================
+   Layout — containers, grids, responsive breakpoints (320 → 1920)
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: 72rem; /* 1152 px */
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+/* --- Hero section (Homepage) --- */
+
+.hero {
+  background-color: var(--color-bg-hero);
+  padding-block: 3rem;
+  text-align: center;
+}
+
+.hero__inner {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    padding-block: 4rem;
+  }
+}
+
+/* --- Category tile grid (Homepage) --- */
+
+.category-grid {
+  padding-block: 3rem;
+  padding-inline: 1rem;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.category-grid__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 36rem) {
+  .category-grid__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Teaser grid (Category page) --- */
+
+.teaser-grid {
+  padding-block: 2rem;
+  padding-inline: 1rem;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.teaser-grid__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 36rem) {
+  .teaser-grid__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .teaser-grid__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Category intro (Category page) --- */
+
+.category-intro {
+  padding-block: 2rem;
+  padding-inline: 1rem;
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+/* --- Article body column --- */
+
+.article__body {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  padding-block: 2rem;
+}
+
+@media (min-width: 48rem) {
+  .article__body {
+    padding-inline: 2rem;
+    padding-block: 3rem;
+  }
+}
+
+/* --- Static page column (Impressum, Datenschutz) --- */
+
+.page {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  padding-block: 2rem;
+}
+
+/* --- 404 page --- */
+
+.error-page {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  padding-block: 4rem;
+  text-align: center;
+}

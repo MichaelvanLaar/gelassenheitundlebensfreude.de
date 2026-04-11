@@ -8,11 +8,14 @@
     "node": ">=20.11.0"
   },
   "scripts": {
-    "build": "eleventy",
-    "serve": "eleventy --serve --quiet",
+    "build:css": "postcss src/styles/main.css -o _site/styles/styles.css",
+    "build:site": "eleventy",
+    "build": "npm run build:site && npm run build:css",
+    "serve:css": "postcss src/styles/main.css -o _site/styles/styles.css --watch",
+    "serve": "npm run build:css && eleventy --serve --quiet",
     "clean": "rm -rf _site",
-    "format": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{md,njk,css,js,json}\" \".eleventy.js\"",
-    "lint": "prettier --check --no-error-on-unmatched-pattern \"src/**/*.{md,njk,css,js,json}\" \".eleventy.js\""
+    "format": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{md,njk,css,js,json}\" \".eleventy.js\" \"postcss.config.js\"",
+    "lint": "prettier --check --no-error-on-unmatched-pattern \"src/**/*.{md,njk,css,js,json}\" \".eleventy.js\" \"postcss.config.js\""
   },
   "dependencies": {
     "@11ty/eleventy": "3.1.5",
@@ -20,6 +23,11 @@
     "markdown-it": "14.1.1"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "cssnano": "^7.1.4",
+    "postcss": "^8.5.9",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1",
     "prettier": "3.8.1"
   }
 }

@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Typography — Montserrat (400 + 700), heading scale, body text
+   ========================================================================== */
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/montserrat-v31-latin-regular.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/montserrat-v31-latin-700.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+  font-family: Montserrat, system-ui, sans-serif;
+  font-size: 1rem; /* ≥ 16 px */
+  font-weight: 400;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  color: var(--color-text-heading);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+}
+
+h2 {
+  font-size: clamp(1.35rem, 1.15rem + 0.9vw, 1.75rem);
+}
+
+h3 {
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.35rem);
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+p {
+  margin-block-end: 1em;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
