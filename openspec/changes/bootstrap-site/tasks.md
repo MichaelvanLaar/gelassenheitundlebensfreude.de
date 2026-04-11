@@ -32,21 +32,21 @@
 
 ## 4. Styling and design tokens
 
-- [ ] 4.1 Extract the brand colour palette from `docs/requirements/assets/logo-gelassenheitundlebensfreude.svg` and the screen designs; commit values to `src/styles/tokens.css` as CSS custom properties.
-- [ ] 4.2 Write `src/styles/reset.css` (modern minimal reset) and `src/styles/typography.css` (Montserrat assignments, heading scale, body ≥ 16 px, line-height).
-- [ ] 4.3 Write `src/styles/layout.css` (container widths, grid for tiles, responsive breakpoints 320 → 1920).
-- [ ] 4.4 Write `src/styles/components.css` for header, nav, footer, tile, article header container, 404 page.
-- [ ] 4.5 Add PostCSS (or esbuild-css) pipeline step for autoprefixing and minification; output a single `styles.css` (or inlined `<style>` — decide by measurement against NFR-001 LCP).
-- [ ] 4.6 Scan the built CSS and verify that no raw hex / rgb colour literal exists outside `tokens.css`.
-- [ ] 4.7 Verify body computed font-size ≥ 16 px and contrast ≥ 4.5:1 on a rendered article page at 375 px viewport.
+- [x] 4.1 Extract the brand colour palette from `docs/requirements/assets/logo-gelassenheitundlebensfreude.svg` and the screen designs; commit values to `src/styles/tokens.css` as CSS custom properties.
+- [x] 4.2 Write `src/styles/reset.css` (modern minimal reset) and `src/styles/typography.css` (Montserrat assignments, heading scale, body ≥ 16 px, line-height).
+- [x] 4.3 Write `src/styles/layout.css` (container widths, grid for tiles, responsive breakpoints 320 → 1920).
+- [x] 4.4 Write `src/styles/components.css` for header, nav, footer, tile, article header container, 404 page.
+- [x] 4.5 Add PostCSS (or esbuild-css) pipeline step for autoprefixing and minification; output a single `styles.css` (or inlined `<style>` — decide by measurement against NFR-001 LCP).
+- [x] 4.6 Scan the built CSS and verify that no raw hex / rgb colour literal exists outside `tokens.css`.
+- [x] 4.7 Verify body computed font-size ≥ 16 px and contrast ≥ 4.5:1 on a rendered article page at 375 px viewport.
 
 ## 5. Fonts, favicon, logo
 
-- [ ] 5.1 Obtain Montserrat Regular (400) and Bold (700) as WOFF2 under a licence compatible with self-hosting; place under `src/fonts/`.
-- [ ] 5.2 Declare exactly two `@font-face` blocks (400 + 700, no italic) with `font-display: swap` and add `<link rel="preload" as="font" crossorigin>` to the base layout.
-- [ ] 5.3 Copy the favicon set from `docs/requirements/assets/favicon/` into `src/assets/favicon/` and wire all referenced files in `head-meta.njk`.
-- [ ] 5.4 Copy `docs/requirements/assets/logo-gelassenheitundlebensfreude.svg` into `src/assets/logo.svg` and reference it in the header partial.
-- [ ] 5.5 Verify in Network panel that exactly two Montserrat files are fetched from the site's own domain on a cold load.
+- [x] 5.1 Obtain Montserrat Regular (400) and Bold (700) as WOFF2 under a licence compatible with self-hosting; place under `src/fonts/`.
+- [x] 5.2 Declare exactly two `@font-face` blocks (400 + 700, no italic) with `font-display: swap` and add `<link rel="preload" as="font" crossorigin>` to the base layout.
+- [x] 5.3 Copy the favicon set from `docs/requirements/assets/favicon/` into `src/assets/favicon/` and wire all referenced files in `head-meta.njk`.
+- [x] 5.4 Copy `docs/requirements/assets/logo-gelassenheitundlebensfreude.svg` into `src/assets/logo.svg` and reference it in the header partial.
+- [x] 5.5 Verify in Network panel that exactly two Montserrat files are fetched from the site's own domain on a cold load.
 
 ## 6. Images
 
