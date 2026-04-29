@@ -40,6 +40,7 @@ Read and catalog everything that exists. Do this thoroughly before suggesting an
 - Build/test/lint commands (scripts in package.json, Makefile targets, etc.)
 - Formatter and linter configs (.prettierrc, .eslintrc, phpcs.xml, rustfmt.toml, etc.)
 - CI/CD configuration
+- Content-project artifacts: static-site configs (`hugo.toml`, `_config.yml`, `astro.config.*`, `mkdocs.yml`), prose tooling (`.vale.ini`, `.markdownlint.*`), shared knowledge bases or style guides referenced from CLAUDE.md
 - OpenSpec artifacts (`openspec/` directory, `openspec/project.md`, change specs)
 - Documentation (`docs/`, `README.md`, architecture docs)
 - Directory structure and apparent architecture patterns
@@ -112,7 +113,7 @@ Check for these anti-patterns:
 
 **Hooks (Claude Code):**
 
-- Is there a PostToolUse formatter hook? If a formatter exists in the project but no hook runs it, this is a high-impact gap.
+- Is there a PostToolUse formatter hook? If a formatter exists in the project but no hook runs it, this is a high-impact gap. Valid formatter targets include code formatters (prettier, ruff, rustfmt, gofmt, php-cs-fixer) and Markdown formatters (prettier on `.md`, `markdownlint --fix`) — don't skip the audit just because the project produces content rather than code.
 - Is there a PreToolUse hook protecting sensitive files? (defense in depth beyond permissions.deny)
 - Do all hooks use `|| true` for graceful degradation?
 - Are hooks doing "block at submit" rather than "block at write"? (fewer interrupts, smoother flow)
@@ -131,6 +132,16 @@ Check for these anti-patterns:
    - **Keep the project-local hook** (only if the hook manager was added by mistake or is being removed): leave `.githooks/` in place and note that the user needs to resolve which hook system owns `core.hooksPath`.
 4. Also check if `scripts/sync-config-table.*` exists but `.githooks/pre-commit` is missing entirely — the script is orphaned and never runs. Same proposal: wire it into the active hook manager or recreate the `.githooks/` setup.
 5. If the sync script exists in a variant that doesn't match the filesystem conventions of the project (e.g., a `.sh` script in a Node-only project where the team prefers `.js`), note it as a nice-to-have for harmonization but don't force the change.
+
+**Secret scanning in pre-commit hooks:**
+
+Check if the project's active pre-commit hook (whether in `.githooks/`, `.husky/`, lefthook, or pre-commit framework) includes a secret scanner like gitleaks. If the project has sensitive files (`.env`, API keys, credentials) or `permissions.deny` entries for secrets, but no pre-commit secret scanning, recommend adding gitleaks to the active pre-commit hook:
+
+```bash
+gitleaks git --pre-commit --staged || exit 1
+```
+
+This catches secrets committed by both Claude Code and the user. Unlike `permissions.deny` (which only prevents Claude from reading existing secrets), gitleaks prevents anyone from committing new ones. Note: gitleaks must be installed separately (`brew install gitleaks`, `apt install gitleaks`, or via the project's CI toolchain). Only recommend — never install tools on the user's machine without explicit permission.
 
 **Environment variables:**
 
@@ -216,6 +227,7 @@ Organize findings into three categories:
 - Missing Learnings section in CLAUDE.md
 - Skills that could be created for recurring workflows
 - MCP servers that could be added or removed
+- Missing secret scanner (gitleaks) in pre-commit hook
 - Sync script format mismatch with project conventions (e.g., `.sh` in a Node-only repo)
 
 Present the findings to the user as a concise list, grouped by category. For each finding, state: what the issue is, why it matters, and what you'd change. Ask for approval before making changes.
